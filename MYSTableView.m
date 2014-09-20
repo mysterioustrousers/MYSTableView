@@ -7,7 +7,6 @@
 //
 
 #import "MYSTableView.h"
-#import "MYSLabel.h"
 #import <QuartzCore/QuartzCore.h>
 
 

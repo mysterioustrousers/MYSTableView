@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "NSIndexPath+MYSAdditions.h"
+#import "NSIndexPath+MYSTableView.h"
 
 
 @protocol MYSTableViewDataSource;
@@ -31,11 +31,6 @@
  *  default is YES. Controls whether rows can be selected when not in editing mode.
  */
 @property (nonatomic, assign) BOOL allowsSelection;
-
-/**
- *  default is NO. Controls whether multiple rows can be selected simultaneously
- */
-@property (nonatomic, assign) BOOL allowsMultipleSelection;
 
 /**
  *  default is the standard separator gray
