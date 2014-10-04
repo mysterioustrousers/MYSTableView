@@ -197,7 +197,7 @@
             NSLog(@"MYS delegate reporting number of rows for section %@: %@", @(sectionIndex), @([self.dispatcher tableView:self numberOfRowsInSection:sectionIndex]));
         }
         NSLog(@"tableview number of rows: %@", @([super numberOfRows]));
-        NSLog(@"Invalid row index");
+        NSLog(@"Invalid row index %@", @(rowIndex));
     }
     if (rowIndex < 0) return nil;
     NSInteger currentSectionIndex   = 0;
@@ -214,7 +214,7 @@
         currentRowIndex -= numberOfRowsInSection;
         currentSectionIndex++;
     }
-    NSAssert(NO, @"There is no valid index path for this row index");
+    NSAssert(NO, @"There is no valid index path for this row index: %@", @(rowIndex));
     return nil;
 }
 
@@ -280,13 +280,13 @@
 
 - (NSIndexPath *)indexPathForRowAtPoint:(CGPoint)point
 {
-    NSUInteger rowIndex = [self rowAtPoint:point];
+    NSUInteger rowIndex = [self unshiftedRow:[self rowAtPoint:point]];
     return [self indexPathForRowIndex:rowIndex];
 }
 
 - (NSIndexPath *)indexPathForCell:(id)cell
 {
-    NSUInteger rowIndex = [self rowForView:[cell superview]];
+    NSUInteger rowIndex = [self unshiftedRow:[self rowForView:[cell superview]]];
     return [self indexPathForRowIndex:rowIndex];
 }
 
